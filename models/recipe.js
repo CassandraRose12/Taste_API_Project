@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false
     },
-    cuisine: {
+    country: {
         type: DataTypes.STRING,
         allowNull: false
     },

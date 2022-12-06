@@ -3,7 +3,7 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class MeasurementUnit extends Model {
+  class Measurement extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -13,21 +13,25 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
-  MeasurementUnit.init({
-    measurement_unit_id: {
+  Measurement.init({
+    measurement_id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true
     },
-    description: {
-        type: DataTypes.STRING,
+    qty: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
+    unit: {
+        type: DataTypes.INTEGER,
         allowNull: false
     },
   }, {
     sequelize,
-    modelName: 'MeasurementUnit',
-    tableName: 'measurement_units',
+    modelName: 'Measurement',
+    tableName: 'measurements',
     timestamps: false
   });
-  return MeasurementUnit;
+  return Measurement;
 };

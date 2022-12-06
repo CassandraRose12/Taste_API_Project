@@ -9,8 +9,20 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate(models) {
-      // define association here
+    static associate({Recipe, Ingredient, Measurement }) {
+      // recipe, ingredient, measurement
+      RecipeIngredient.belongsTo(Recipe, {
+          foreignKey: "recipe_id",
+          as: "recipe"
+      })
+      RecipeIngredient.belongsTo(Ingredient, {
+          foreignKey: "ingredient_id",
+          as: "ingredient"
+      })
+      RecipeIngredient.belongsTo(Measurement,{
+          foreignKey: "measurement_id",
+          as: "measurement"
+      })
     }
   }
   RecipeIngredient.init({
@@ -19,26 +31,18 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       autoIncrement: true
     },
-    name: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    amount: {
+    recipe_id: {
         type: DataTypes.INTEGER,
         allowNull: false
     },
-    cuisine: {
-        type: DataTypes.STRING,
+    ingredient_id: {
+        type: DataTypes.INTEGER,
         allowNull: false
     },
-    difficulty: {
-        type: DataTypes.SMALLINT,
-        allowNull: true
+    measurement_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false
     },
-    description: {
-        type: DataTypes.TEXT,
-        allowNull: true
-    }
   }, {
     sequelize,
     modelName: 'RecipeIngredient',
