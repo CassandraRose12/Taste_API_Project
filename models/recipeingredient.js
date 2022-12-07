@@ -11,18 +11,18 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate({Recipe, Ingredient, Measurement }) {
       // recipe, ingredient, measurement
-      RecipeIngredient.belongsTo(Recipe, {
-          foreignKey: "recipe_id",
-          as: "recipe"
-      })
-      RecipeIngredient.belongsTo(Ingredient, {
-          foreignKey: "ingredient_id",
-          as: "ingredient"
-      })
-      RecipeIngredient.belongsTo(Measurement,{
-          foreignKey: "measurement_id",
-          as: "measurement"
-      })
+    //   RecipeIngredient.belongsTo(Recipe, {
+    //       foreignKey: "recipe_id",
+    //       as: "recipe"
+    //   })
+    //   RecipeIngredient.belongsTo(Ingredient, {
+    //       foreignKey: "ingredient_id",
+    //       as: "ingredient"
+    //   })
+    //   RecipeIngredient.belongsTo(Measurement,{
+    //       foreignKey: "measurement_id",
+    //       as: "measurement"
+    //   })
     }
   }
   RecipeIngredient.init({
@@ -39,7 +39,11 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         allowNull: false
     },
-    measurement_id: {
+    qty: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
+    unit: {
         type: DataTypes.INTEGER,
         allowNull: false
     },
