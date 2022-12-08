@@ -9,7 +9,8 @@ const recipes = require('./controllers/recipes_controller')
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
-app.use((req, res, next) => {
+app.use((req, res, next) => { 
+    console.log(req)
     console.log("this is our middleware");
     next();
 });
@@ -26,8 +27,8 @@ app.get('/', (req, res) => {
 const recipesController = require('./controllers/recipes_controller')
 app.use('/api/recipes', recipesController)
 
-// const eventsController = require('./controllers/events_controller')
-// app.use('/events', eventsController)
+const ingredientsController  = require('./controllers/ingredients_controller')
+app.use('/api/ingredients', ingredientsController)
 
 // const stagesController = require('./controllers/stages_controller')
 // app.use('/stages', stagesController)

@@ -1,61 +1,40 @@
 const recipes = require('express').Router()
+const ingredients = require('express').Router()
 const db = require('../models')
-const { Recipe, } = db 
+const { Recipe, Ingredient, RecipeIngredient } = db 
 const { Op } = require('sequelize')
 
 // FIND ALL Recipes
 recipes.get('/', async (req, res) => {
     try {
-        console.log("I'm here")
-        const foundRecipes = await Recipe.findAll({
-            order: [ [ 'name', 'country' ] ],
-            where: {
-                name: { [Op.like]: `%${req.query.name ? req.query.name : ''}%` }
-            }
-        })
+        const foundRecipes = await Recipe.findAll()
+        //     order: [ [ 'name', 'ASC' ] ],
+        //     where: {
+        //         name: { [Op.like]: `%${req.query.name ? req.query.name : ''}%` }
+        //     }
+        // })
         res.status(200).json(foundRecipes)
+        console.log("I'm here")
     } catch (error) {
+        console.log("broke")
         res.status(500).json(error)
     }
 })
 
-// // FIND A SPECIFIC BAND
-// recipes.get('/api/recipes/:id', async (req, res) => {
-//     try {
-//         const foundBand = await Recipe.findOne({
-//             where: { name: req.params.name },
-//             include: [
-//                 { 
-//                     model: recipe, 
-//                     as: "recipe", 
-//                     attributes: { exclude: ["band_id", "event_id"] },
-//                     include: { 
-//                         model: Event, 
-//                         as: "event", 
-//                         where: { name: { [Op.like]: `%${req.query.event ? req.query.event : ''}%` } } 
-//                     }
-//                 },
-//                 { 
-//                     model: SetTime, 
-//                     as: "set_times",
-//                     attributes: { exclude: ["band_id", "event_id"] },
-//                     include: { 
-//                         model: Event, 
-//                         as: "event", 
-//                         where: { name: { [Op.like]: `%${req.query.event ? req.query.event : ''}%` } } 
-//                     }
-//                 }
-//             ],
-//             order: [
-//                 [{ model: MeetGreet, as: "meet_greets" }, { model: Event, as: "event" }, 'date', 'DESC'],
-//                 [{ model: SetTime, as: "set_times" }, { model: Event, as: "event" }, 'date', 'DESC']
-//             ]
-//         })
-//         res.status(200).json(foundBand)
-//     } catch (error) {
-//         res.status(500).json(error)
-//     }
-// })
+// FIND A SPECIFIC RECIPE
+recipes.get('/:id', async (req, res) => {
+    try {
+        const foundRecipe = await Recipe.findOne({
+            where: { recipe_id: req.params.id }
+        })
+        res.status(200).json(foundRecipe)
+        console.log("Nice Work")
+    } catch (error) {
+        res.status(500).json(error)
+        console.log(error)
+    }
+})
+
 
 // CREATE A NEW RECIPE
 recipes.post('/', async (req, res) => {
@@ -64,12 +43,13 @@ recipes.post('/', async (req, res) => {
         res.status(200).json({
             message: 'Successfully inserted a new recipe',
             data: newRecipe
-        })
+        });
+        console.log("GREEEENNNN")
     } catch(err) {
         console.log("broke")
         res.status(500).json(err)
     }
-})
+});
 
 // UPDATE A RECIPE
 recipes.put('/:id', async (req, res) => {
@@ -78,15 +58,15 @@ recipes.put('/:id', async (req, res) => {
             where: {
                 recipe_id: req.params.id
             }
-        })
+        });
         res.status(200).json({
-            message: `Successfully updated ${updatedRecipes} recipe(s)`
-        })
+            message: `Successfully updated`,
+        });
     } catch(err) {
-        console.log("broke")
         res.status(500).json(err)
+        console.log("broke")
     }
-})
+});
 
 // DELETE A RECIPE
 recipes.delete('/:id', async (req, res) => {
@@ -97,11 +77,11 @@ recipes.delete('/:id', async (req, res) => {
             }
         })
         res.status(200).json({
-            message: `Successfully deleted ${deletedRecipes} recipe(s)`
+            message: `Successfully deleted`
         })
     } catch(err) {
-        console.log("broken")
         res.status(500).json(err)
+        console.log("broken")
     }
 })
 
