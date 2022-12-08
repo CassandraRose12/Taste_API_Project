@@ -23,9 +23,10 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false
     },
-    cusine: {
-        type: DataTypes.STRING,
-        allowNull: false
+    country: {
+      type: DataTypes.STRING,
+      allowNull: false
+
     },
     difficulty: {
         type: DataTypes.SMALLINT,
