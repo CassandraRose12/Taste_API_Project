@@ -1,10 +1,11 @@
+require("dotenv").config();
+const PORT = process.env.PORT || 3010;
 const express = require("express");
 const app = express();
 const { Sequelize } = require('sequelize')
 const recipes = require('./controllers/recipes_controller')
 
 // CONFIGURATION / MIDDLEWARE
-require("dotenv").config();
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
@@ -23,7 +24,7 @@ app.get('/', (req, res) => {
 
 // CONTROLLERS  
 const recipesController = require('./controllers/recipes_controller')
-app.use('/recipes', recipesController)
+app.use('/api/recipes', recipesController)
 
 // const eventsController = require('./controllers/events_controller')
 // app.use('/events', eventsController)
@@ -85,7 +86,6 @@ app.use('/recipes', recipesController)
 //     });
 // });
 
-const PORT = process.env.PORT || 3006;
 app.listen(process.env.PORT, () => {
     console.log(`🎸 Rockin' on port: ${process.env.PORT}`);
 });

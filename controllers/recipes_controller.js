@@ -3,30 +3,31 @@ const db = require('../models')
 const { Recipe, } = db 
 const { Op } = require('sequelize')
 
-// // FIND ALL BANDS
-// bands.get('/', async (req, res) => {
-//     try {
-//         const foundBands = await Band.findAll({
-//             order: [ [ 'available_start_time', 'ASC' ] ],
-//             where: {
-//                 name: { [Op.like]: `%${req.query.name ? req.query.name : ''}%` }
-//             }
-//         })
-//         res.status(200).json(foundBands)
-//     } catch (error) {
-//         res.status(500).json(error)
-//     }
-// })
+// FIND ALL Recipes
+recipes.get('/', async (req, res) => {
+    try {
+        console.log("I'm here")
+        const foundRecipes = await Recipe.findAll({
+            order: [ [ 'name', 'country' ] ],
+            where: {
+                name: { [Op.like]: `%${req.query.name ? req.query.name : ''}%` }
+            }
+        })
+        res.status(200).json(foundRecipes)
+    } catch (error) {
+        res.status(500).json(error)
+    }
+})
 
 // // FIND A SPECIFIC BAND
-// bands.get('/:name', async (req, res) => {
+// recipes.get('/api/recipes/:id', async (req, res) => {
 //     try {
-//         const foundBand = await Band.findOne({
+//         const foundBand = await Recipe.findOne({
 //             where: { name: req.params.name },
 //             include: [
 //                 { 
-//                     model: MeetGreet, 
-//                     as: "meet_greets", 
+//                     model: recipe, 
+//                     as: "recipe", 
 //                     attributes: { exclude: ["band_id", "event_id"] },
 //                     include: { 
 //                         model: Event, 
@@ -56,8 +57,6 @@ const { Op } = require('sequelize')
 //     }
 // })
 
-
-
 // CREATE A NEW RECIPE
 recipes.post('/', async (req, res) => {
     try {
@@ -67,12 +66,13 @@ recipes.post('/', async (req, res) => {
             data: newRecipe
         })
     } catch(err) {
+        console.log("broke")
         res.status(500).json(err)
     }
 })
 
 // UPDATE A RECIPE
-recipes.put('/api/recipes/:id', async (req, res) => {
+recipes.put('/:id', async (req, res) => {
     try {
         const updatedRecipe = await Recipe.update(req.body, {
             where: {
@@ -83,12 +83,13 @@ recipes.put('/api/recipes/:id', async (req, res) => {
             message: `Successfully updated ${updatedRecipes} recipe(s)`
         })
     } catch(err) {
+        console.log("broke")
         res.status(500).json(err)
     }
 })
 
 // DELETE A RECIPE
-recipes.delete('/api/recipes/:id', async (req, res) => {
+recipes.delete('/:id', async (req, res) => {
     try {
         const deletedRecipe = await Recipe.destroy({
             where: {
@@ -99,6 +100,7 @@ recipes.delete('/api/recipes/:id', async (req, res) => {
             message: `Successfully deleted ${deletedRecipes} recipe(s)`
         })
     } catch(err) {
+        console.log("broken")
         res.status(500).json(err)
     }
 })

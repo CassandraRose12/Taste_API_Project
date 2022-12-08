@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false
     },
-    cuisine: {
+    cusine: {
         type: DataTypes.STRING,
         allowNull: false
     },
