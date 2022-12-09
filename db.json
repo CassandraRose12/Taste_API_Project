@@ -1,0 +1,179 @@
+[
+    {
+        "model": "Recipe",
+        "data": {
+            "id":1,
+            "name":"Plov",
+            "country":"Azerbaijian", 
+            "difficulty":"", 
+            "description":"Saffron rice is topped with meltingly tender lamb, slow cooked with a range of ingredients including dried apricots, dried chestnuts and cumin."
+
+        }
+    },
+    {
+        "model": "Recipe",
+        "data": {
+            "id": 2,
+            "name":"Moules", 
+            "country":"Belgium", 
+            "difficulty":"", 
+            "description":"As Belgium's national dish, each pan of steaming mussels is served with a helping of the obligatory chunky frites. Traditionally sent out mariniere-style, with cream, parsley and a splash of white wine, there's also a hearty version with beer marinade worth seeking out."   
+
+        }
+    },
+    {
+        "model": "Ingredient",
+        "data": {
+            "id": 1,
+            "name": "carrot",
+            "description":""
+        }
+    },
+    {
+        "model": "Ingredient",
+        "data": {
+            "id": 2,
+            "name": "basmati-rice",
+            "description":""
+        }
+    },
+    {
+        "model": "Ingredient",
+        "data": {
+            "id": 3,
+            "name": "lamb-shank",
+            "description":""
+        }
+    }, {
+        "model": "Ingredient",
+        "data": {
+            "id": 4,
+            "name": "parsley",
+            "description":""
+        }
+    },
+    {
+        "model": "Ingredient",
+        "data": {
+            "id": 5,
+            "name": "chicken broth",
+            "description":""
+        }
+    },
+    {
+        "model": "Ingredient",
+        "data": {
+            "id": 6,
+            "name": "saffron",
+            "description":""
+        }
+    },
+    {
+        "model": "Ingredient",
+        "data": {
+            "id": 7,
+            "name": "mussels",
+            "description":""
+        }
+    }, {
+        "model": "Ingredient",
+        "data": {
+            "id": 8,
+            "name": "potatos",
+            "description":""
+        }
+    }, {
+        "model": "Ingredient",
+        "data": {
+            "id": 9,
+            "name": "cream",
+            "description":""
+        }
+    }, {
+        "model": "Ingredient",
+        "data": {
+            "id": 10,
+            "name": "white wine",
+            "description":""
+        }
+    },
+    {
+        "model": "Ingredient",
+        "data": {
+            "id": 11,
+            "name": "salt",
+            "description":""
+        }
+    }, {
+        "model": "Ingredient",
+        "data": {
+            "id": 12,
+            "name": "pepper",
+            "description":""
+        }
+    }, {
+        "model": "Ingredient",
+        "data": {
+            "id": 13,
+            "name": "swiss-cheese",
+            "description":""
+        }
+    },
+    {
+        "model": "RecipeIngredient",
+        "data": {
+            "id": 1,
+            "recipe_id":1,
+            "ingredient_id":1,
+            "qty": "1",
+            "unit":"stalk"
+        }
+    },
+    {
+        "model": "RecipeIngredient",
+        "data": {
+            "id": 2,
+            "recipe_id":1,
+            "ingredient_id":2,
+            "qty": "1",
+            "unit":"cup"
+        }
+    },{
+        "model": "RecipeIngredient",
+        "data": {
+            "id": 3,
+            "recipe_id":1,
+            "ingredient_id":3,
+            "qty": "1",
+            "unit":"lb"
+        }
+    },{
+        "model": "RecipeIngredient",
+        "data": {
+            "id": 4,
+            "recipe_id":1,
+            "ingredient_id":4,
+            "qty": "1",
+            "unit":"TBS"
+        }
+    },{
+        "model": "RecipeIngredient",
+        "data": {
+            "id": 5,
+            "recipe_id":1,
+            "ingredient_id":5,
+            "qty": "2.5",
+            "unit":"cups"
+        }
+    },{
+        "model": "RecipeIngredient",
+        "data": {
+            "id": 6,
+            "recipe_id":1,
+            "ingredient_id":6,
+            "qty": "1",
+            "unit":"pinch"
+        }
+    }
+
+]
