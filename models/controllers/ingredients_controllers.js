@@ -20,7 +20,7 @@ ingredients.get('/:id', async (req, res) => {
         const foundIngredient = await Ingredient.findOne({
             where: { ingredient_id: req.params.id }
         })
-        res.status(200).json(foundIngredients)
+        res.status(200).json(foundIngredient)
     } catch (error) {
         res.status(500).json(error)
     }
