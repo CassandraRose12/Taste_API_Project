@@ -36,3 +36,10 @@ app.use('/api/recipeIngredients', recipeIngredientsController)
 app.listen(process.env.PORT, () => {
     console.log(`💪 Signal on port: ${process.env.PORT}`);
 });
+    
+// const sequelize_fixtures = require('sequelize-fixtures');
+// const models = require('./models');
+// sequelize_fixtures.loadFile('db.json', models).catch(function(err){
+//     console.log(err)
+// });
+

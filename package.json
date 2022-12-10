@@ -16,6 +16,7 @@
     "nodemon": "^2.0.20",
     "pg": "^8.8.0",
     "sequelize": "^6.26.0",
+    "sequelize-fixtures": "^1.2.0",
     "sqlite3": "^5.1.2"
   }
 }

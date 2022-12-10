@@ -7,12 +7,21 @@ const { Op } = require('sequelize')
 // FIND ALL Recipes
 recipes.get('/', async (req, res) => {
     try {
-        const foundRecipes = await Recipe.findAll()
-        //     order: [ [ 'name', 'ASC' ] ],
+        const foundRecipes = await Recipe.findAll({
+            order: [ [ 'name', 'ASC' ] ],
+            include: [
+                // "recipe_ingredients"
+                {
+                    // model: RecipeIngredient,
+                    // as: "recipe_ingredients",
+                    all: true,
+                    nested: true
+                }
+            ]
         //     where: {
         //         name: { [Op.like]: `%${req.query.name ? req.query.name : ''}%` }
         //     }
-        // })
+        })
         res.status(200).json(foundRecipes)
         console.log("I'm here")
     } catch (error) {
