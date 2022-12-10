@@ -42,11 +42,16 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         allowNull: false
     },
+    RecipeRecipeId: {
+      type: DataTypes.INTEGER,
+      allowNull: true
+    },
   }, {
     sequelize,
     modelName: 'RecipeIngredient',
     tableName: 'recipe_ingredients',
     timestamps: false
   });
+  RecipeIngredient.sync({alter:true})
   return RecipeIngredient;
 };

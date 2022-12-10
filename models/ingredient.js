@@ -36,5 +36,7 @@ module.exports = (sequelize, DataTypes) => {
     tableName: 'ingredients',
     timestamps: false
   });
+  //keep tables in sync with models
+  Ingredient.sync({alter:true})
   return Ingredient;
 };

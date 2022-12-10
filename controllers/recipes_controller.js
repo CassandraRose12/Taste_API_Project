@@ -8,7 +8,16 @@ const { Op } = require('sequelize')
 recipes.get('/', async (req, res) => {
     try {
         const foundRecipes = await Recipe.findAll({
-            order: [ [ 'name', 'ASC' ] ]
+            order: [ [ 'name', 'ASC' ] ],
+            include: [
+                // "recipe_ingredients"
+                {
+                    // model: RecipeIngredient,
+                    // as: "recipe_ingredients",
+                    all: true,
+                    nested: true
+                }
+            ]
         //     where: {
         //         name: { [Op.like]: `%${req.query.name ? req.query.name : ''}%` }
         //     }

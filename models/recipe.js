@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate({RecipeIngredient}) {
       // define association here
       Recipe.hasMany(RecipeIngredient,{
-        foreignKey: "recipe_ingredient_id",
+        foreignKey: "recipe_id",
         as: "recipe_ingredients"
       })
     }
@@ -45,5 +45,6 @@ module.exports = (sequelize, DataTypes) => {
     tableName: 'recipes',
     timestamps: false
   });
+  Recipe.sync({alter:true})
   return Recipe;
 };

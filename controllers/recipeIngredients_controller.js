@@ -5,7 +5,23 @@ const { Recipe, Ingredient, RecipeIngredient } = db
 // FIND ALL INGREDIENTS
 recipeIngredients.get('/', async (req, res) => {
     try{
-        const foundRecipeIngredients = await RecipeIngredient.findAll()
+        const foundRecipeIngredients = await RecipeIngredient.findAll({
+            attibutes: {
+                exclude: [
+                    "RecipeRecipeId"
+                ]
+            },
+            include: [
+                {
+                    model: Recipe,
+                    as: "recipe"
+                },
+                {
+                    model: Ingredient,
+                    as: "ingredient",
+                }
+            ]
+        })
         res.status(200).json(foundRecipeIngredients)
         console.log("success")
     } catch (error) {
