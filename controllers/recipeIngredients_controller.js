@@ -6,7 +6,7 @@ const { Recipe, Ingredient, RecipeIngredient } = db
 recipeIngredients.get('/', async (req, res) => {
     try{
         const foundRecipeIngredients = await RecipeIngredient.findAll({
-            attibutes: {
+            attributes: {
                 exclude: [
                     "RecipeRecipeId"
                 ]
