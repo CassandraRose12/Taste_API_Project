@@ -14,7 +14,7 @@ recipeIngredients.get('/', async (req, res) => {
             include: [
                 {
                     model: Recipe,
-                    as: "recipe"
+                    as: "recipe",
                 },
                 {
                     model: Ingredient,

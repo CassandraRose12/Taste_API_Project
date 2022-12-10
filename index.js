@@ -3,10 +3,12 @@ const PORT = process.env.PORT || 3010;
 const express = require("express");
 const app = express();
 const { Sequelize } = require('sequelize')
+const cors = require('cors');
 
 // CONFIGURATION / MIDDLEWARE
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
+app.use(cors())
 
 app.use((req, res, next) => { 
     console.log(req)
